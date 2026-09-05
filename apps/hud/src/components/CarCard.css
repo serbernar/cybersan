@@ -1,0 +1,37 @@
+.hero {
+  display: grid;
+  min-width: 0;
+  grid-template-rows: auto 1fr auto;
+  gap: 6px;
+  min-height: 0;
+  padding: 6px 0 0;
+}
+
+.hero__speed { display: flex; align-items: baseline; gap: 10px; padding-left: 4px; }
+
+/* Light weight at large size is the Tesla tell: the number is big because it
+   matters, not because it shouts. */
+.hero__value {
+  font-size: 96px;
+  font-weight: 300;
+  line-height: 0.86;
+  letter-spacing: -0.045em;
+}
+
+.hero__unit { font-size: 14px; color: var(--text-3); }
+
+/* No speed source yet: the placeholder must read as "unknown", not as a value. */
+.hero__speed.is-unknown .hero__value { color: var(--text-3); opacity: 0.5; }
+
+.hero__art { min-height: 0; display: grid; place-items: center; }
+
+.hero__state {
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-3);
+  padding: 10px 0 4px;
+}
+
+.hero__state.is-alert { color: var(--crit); }
+
+[data-layout='portrait'] .hero__value { font-size: 76px; }

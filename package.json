@@ -1,0 +1,21 @@
+{
+  "name": "cybersan",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Raspberry Pi infotainment and telemetry head unit for the Nissan X-Trail T30",
+  "license": "GPL-3.0-or-later",
+  "type": "module",
+  "workspaces": [
+    "apps/hud",
+    "packages/protocol"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace @cybersan/hud",
+    "build": "npm run build --workspace @cybersan/hud",
+    "preview": "npm run preview --workspace @cybersan/hud",
+    "typecheck": "tsc -b --pretty apps/hud packages/protocol",
+    "daemon": "python3 -m cybersan --dev",
+    "deploy": "deploy/deploy.sh"
+  },
+  "engines": { "node": ">=20.19" }
+}

@@ -1,0 +1,18 @@
+[project]
+name = "cybersan-daemon"
+version = "0.1.0"
+description = "Vehicle state daemon for the cybersan head unit"
+requires-python = ">=3.11"
+license = { text = "GPL-3.0-or-later" }
+dependencies = ["aiohttp>=3.10"]
+
+[project.optional-dependencies]
+# Installed on the car, not on a development machine.
+vehicle = ["obd>=0.7.2", "gpiozero>=2.0", "pyserial>=3.5"]
+
+[project.scripts]
+cybersan-daemon = "cybersan.__main__:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"

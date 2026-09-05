@@ -1,0 +1,22 @@
+.dock {
+  grid-area: bar;
+  display: flex;
+  align-items: center;
+  padding: 8px 0 10px;
+  border-top: 1px solid var(--line-soft);
+}
+
+.dock__gear {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 0 16px;
+  border-radius: 12px;
+  color: var(--text-3);
+  font-size: 13px;
+  transition: color var(--speed) var(--ease), background var(--speed) var(--ease);
+}
+
+.dock__gear:active { background: var(--surface-2); }
+.dock__gear.is-active { color: var(--text); background: var(--surface-2); }
