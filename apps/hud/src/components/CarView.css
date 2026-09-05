@@ -1,0 +1,12 @@
+.carview { position: relative; width: 100%; height: 100%; }
+
+.carview__layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.carview__layer--fade { opacity: 0; transition: opacity var(--speed) var(--ease); }
+.carview__layer--fade.is-on { opacity: 1; }

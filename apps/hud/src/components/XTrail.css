@@ -1,0 +1,88 @@
+.veh { width: 100%; height: 100%; display: block; }
+
+.veh__paint { fill: url(#vehPaint); }
+
+/* Running: the body catches a touch more light. Monochrome, so it registers as
+   "awake" without competing with the state colours. */
+.veh__highlight {
+  fill: url(#vehHighlight);
+  pointer-events: none;
+  opacity: 0.32;
+  transition: opacity var(--speed) var(--ease);
+}
+
+.veh.is-running .veh__highlight { opacity: 0.5; }
+
+.veh__sill { fill: url(#vehSill); }
+
+.veh__rail {
+  stroke: var(--car-rail);
+  stroke-width: 7;
+  stroke-linecap: round;
+  fill: none;
+}
+
+.veh__glass { fill: url(#vehGlass); }
+.veh__pillar { fill: var(--car-trim); }
+
+/* Panel gaps read as shadow, never as outline. */
+.veh__gaps path {
+  stroke: var(--car-gap);
+  stroke-width: 1.6;
+  fill: none;
+  opacity: 0.85;
+}
+
+.veh__mirror { fill: var(--car-trim); }
+.veh__handle { fill: var(--car-handle); opacity: 0.75; }
+
+.veh__cladding {
+  fill: none;
+  stroke: var(--car-cladding);
+  stroke-width: 13;
+  stroke-linecap: round;
+}
+
+.veh__tyre { fill: var(--car-tyre); }
+.veh__tyre-inner { fill: var(--car-tyre-inner); }
+.veh__rim { fill: var(--car-rim); }
+.veh__spoke { fill: var(--car-spoke); }
+.veh__hub { fill: var(--car-hub); }
+
+.veh__lamp-front { fill: var(--car-lamp); }
+.veh__lamp-rear { fill: var(--car-lamp-rear); }
+
+/* Gradient stops, themed through the same tokens as everything else. */
+.veh-paint-1 { stop-color: var(--car-paint-1); }
+.veh-paint-2 { stop-color: var(--car-paint-2); }
+.veh-paint-3 { stop-color: var(--car-paint-3); }
+.veh-paint-4 { stop-color: var(--car-paint-4); }
+.veh-glass-1 { stop-color: var(--car-glass-1); }
+.veh-glass-2 { stop-color: var(--car-glass-2); }
+.veh-sill-1 { stop-color: var(--car-sill-1); }
+.veh-sill-2 { stop-color: var(--car-sill-2); }
+.veh-shadow-1 { stop-color: var(--car-shadow); stop-opacity: 0.85; }
+.veh-shadow-2 { stop-color: var(--car-shadow); stop-opacity: 0.28; }
+.veh-shadow-3 { stop-color: var(--car-shadow); stop-opacity: 0; }
+
+.veh__lamps.is-on .veh__lamp-front {
+  fill: #fff6dd;
+  filter: drop-shadow(0 0 14px rgba(255, 246, 221, 0.9));
+}
+
+.veh__lamps.is-on .veh__lamp-rear {
+  fill: var(--crit);
+  filter: drop-shadow(0 0 12px rgba(255, 69, 58, 0.7));
+}
+
+.veh__openings path {
+  fill: transparent;
+  stroke: transparent;
+  stroke-width: 2;
+  transition: fill var(--speed) var(--ease), stroke var(--speed) var(--ease);
+}
+
+.veh__openings path.is-open {
+  fill: rgba(255, 69, 58, 0.28);
+  stroke: var(--crit);
+}

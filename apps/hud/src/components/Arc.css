@@ -1,0 +1,21 @@
+.arc { flex: none; }
+
+.arc__track { fill: none; stroke: var(--surface-3); }
+
+.arc__value {
+  fill: none;
+  stroke: var(--accent);
+  stroke-linecap: round;
+  transition: stroke-dasharray var(--speed) linear;
+}
+
+.arc--crit .arc__value { stroke: var(--crit); }
+.arc--cool .arc__value { stroke: var(--cool); }
+
+.arc__text {
+  fill: var(--text);
+  font-family: var(--font);
+  font-size: 21px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}

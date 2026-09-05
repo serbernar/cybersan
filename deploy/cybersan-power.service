@@ -1,0 +1,24 @@
+[Unit]
+Description=cybersan ignition guard
+Documentation=https://github.com/serbernar/cybersan
+After=multi-user.target
+# Deliberately independent of cybersan-daemon.service: if the HUD is broken or
+# stopped, the car must still be able to switch itself off.
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/cybersan/daemon
+Environment=PYTHONUNBUFFERED=1
+# CYBERSAN_POWER_ARGS lives here, e.g. "--pin 4 --delay 20".
+EnvironmentFile=-/opt/cybersan/power.env
+ExecStart=/usr/bin/python3 -m cybersan.power $CYBERSAN_POWER_ARGS
+Restart=always
+RestartSec=2
+# Root: it calls `systemctl poweroff` and claims a GPIO line.
+User=root
+# /run/cybersan, world-readable so the HUD daemon can see the ignition state.
+RuntimeDirectory=cybersan
+RuntimeDirectoryMode=0755
+
+[Install]
+WantedBy=multi-user.target

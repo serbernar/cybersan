@@ -1,0 +1,3 @@
+.car3d { width: 100%; height: 100%; display: block; min-height: 0; }
+.car3d canvas { display: block; width: 100%; height: 100%; }
+.car3d.is-failed { display: none; }

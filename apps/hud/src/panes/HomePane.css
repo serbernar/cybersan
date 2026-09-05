@@ -1,0 +1,73 @@
+.vitals {
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  align-content: start;
+  gap: 4px;
+  min-height: 0;
+  padding-left: var(--pad);
+  border-left: 1px solid var(--line-soft);
+}
+
+.vitals__range {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 4px 0 20px;
+}
+
+.vitals__big {
+  margin: 4px 0 0;
+  font-size: 40px;
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.vitals__big em { font-style: normal; font-size: 14px; color: var(--text-3); margin-left: 6px; }
+
+.vitals__note { margin: 4px 0 0; font-size: 12px; color: var(--text-3); }
+
+.vitals__list { margin: 0; display: grid; align-content: start; }
+
+/* Hairlines instead of cards: four rows of one thing each, nothing boxed in. */
+.vitals__row {
+  display: grid;
+  gap: 3px;
+  padding: 14px 0;
+  border-top: 1px solid var(--line-soft);
+}
+
+.vitals__row dd { margin: 0; display: flex; align-items: baseline; gap: 10px; }
+
+.vitals__value { font-size: 26px; font-weight: 500; }
+.vitals__value em { font-style: normal; font-size: 13px; color: var(--text-3); margin-left: 3px; }
+.vitals__value.is-crit { color: var(--crit); }
+
+[data-layout='portrait'] .vitals {
+  padding-left: 0;
+  border-left: none;
+  border-top: 1px solid var(--line-soft);
+  padding-top: 10px;
+}
+
+.vitals__pending { padding-top: 18px; }
+
+.vitals__pending ul { margin: 10px 0 0; padding: 0; list-style: none; display: grid; gap: 2px; }
+
+.vitals__pending li {
+  display: grid;
+  gap: 2px;
+  padding: 11px 0;
+  border-top: 1px solid var(--line-soft);
+}
+
+.vitals__pending b { font-size: 15px; font-weight: 500; color: var(--text-2); }
+.vitals__pending span { font-size: 12px; color: var(--text-3); }
+
+.vitals__hint {
+  margin: 14px 0 0;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--text-3);
+  max-width: 34ch;
+}

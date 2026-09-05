@@ -1,0 +1,55 @@
+.bt { display: grid; align-content: start; gap: 0; min-height: 0; overflow-y: auto; }
+
+.bt__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.bt__text { display: grid; gap: 3px; min-width: 0; }
+
+.bt__btn {
+  min-height: 42px;
+  padding: 0 16px;
+  border-radius: 10px;
+  background: var(--surface-2);
+  color: var(--text);
+  font-size: 14px;
+  white-space: nowrap;
+  transition: background var(--speed) var(--ease);
+}
+
+.bt__btn:active { background: var(--surface-3); }
+.bt__btn--primary { background: var(--text); color: var(--bg); font-weight: 600; }
+.bt__btn--active { background: var(--accent); color: #fff; font-weight: 600; }
+.bt__btn--danger { color: var(--crit); }
+
+.bt__devices { display: grid; gap: 0; padding-top: 16px; }
+
+.bt__empty { margin: 10px 0 0; font-size: 13px; color: var(--text-3); }
+
+.bt__device {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.bt__name { display: flex; align-items: center; gap: 8px; font-size: 15px; }
+
+.bt__live {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--ok);
+  box-shadow: 0 0 8px rgba(50, 215, 75, 0.5);
+}
+
+.bt__meta { font-size: 11px; color: var(--text-3); letter-spacing: 0.04em; }
+
+.bt__actions { display: flex; gap: 6px; flex: none; }

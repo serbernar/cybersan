@@ -1,0 +1,92 @@
+{
+  "schema": 1,
+  "ts": 0,
+  "vehicle": {
+    "model": "Nissan X-Trail T30",
+    "speedKph": null,
+    "odometerKm": null,
+    "tripKm": null,
+    "gearHint": null
+  },
+  "engine": {
+    "rpm": null,
+    "coolantC": null,
+    "intakeC": null,
+    "loadPct": null,
+    "running": false
+  },
+  "electrical": {
+    "batteryV": null,
+    "ignition": "off"
+  },
+  "fuel": {
+    "levelPct": null,
+    "rangeKm": null,
+    "consumptionLp100": null
+  },
+  "body": {
+    "doors": {
+      "driver": false,
+      "passenger": false,
+      "rearLeft": false,
+      "rearRight": false,
+      "tailgate": false
+    },
+    "windows": {
+      "driver": 0,
+      "passenger": 0,
+      "rearLeft": 0,
+      "rearRight": 0
+    },
+    "lights": {
+      "parking": false,
+      "lowBeam": false,
+      "highBeam": false,
+      "fog": false,
+      "brake": false,
+      "hazard": false,
+      "turnLeft": false,
+      "turnRight": false
+    }
+  },
+  "climate": {
+    "outsideC": null,
+    "cabinC": null
+  },
+  "media": {
+    "playback": "stopped",
+    "title": null,
+    "artist": null,
+    "album": null,
+    "positionS": 0,
+    "durationS": 0,
+    "volume": 40,
+    "muted": false,
+    "source": "none"
+  },
+  "bluetooth": {
+    "adapter": {
+      "alias": null,
+      "discoverable": false,
+      "discoverableFor": 0,
+      "pairable": false
+    },
+    "devices": []
+  },
+  "position": {
+    "lat": null,
+    "lon": null,
+    "altitudeM": null,
+    "headingDeg": null,
+    "satellites": 0
+  },
+  "system": {
+    "cpuTempC": null,
+    "cpuLoadPct": null,
+    "uptimeS": 0,
+    "hostname": null
+  },
+  "warnings": [],
+  "sources": {},
+  "meta": {}
+}

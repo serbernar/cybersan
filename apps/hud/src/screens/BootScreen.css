@@ -1,0 +1,65 @@
+.boot {
+  position: absolute;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 16px;
+  /* Opaque, and from the live palette. A splash you can see through is worse
+     than no splash: it reads as a rendering fault. */
+  background: var(--bg);
+  transition: opacity 320ms var(--ease);
+}
+
+.boot.is-leaving { opacity: 0; }
+
+.boot__mark {
+  display: flex;
+  gap: 2px;
+  font-size: 54px;
+  font-weight: 300;
+  letter-spacing: 0.22em;
+  padding-left: 0.22em;
+  animation: boot-in 600ms var(--ease) both;
+}
+
+.boot__word--accent { font-weight: 700; }
+
+.boot__sub {
+  margin: 0;
+  color: var(--text-3);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.4em;
+  padding-left: 0.4em;
+  animation: boot-in 600ms 120ms var(--ease) both;
+}
+
+.boot__bar {
+  margin-top: 22px;
+  width: 180px;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--surface-3);
+  overflow: hidden;
+}
+
+.boot__bar i {
+  display: block;
+  height: 100%;
+  width: 100%;
+  background: var(--text);
+  transform-origin: left;
+  animation: boot-progress linear both;
+}
+
+@keyframes boot-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes boot-progress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}

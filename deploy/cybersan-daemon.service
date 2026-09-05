@@ -1,0 +1,28 @@
+[Unit]
+Description=cybersan vehicle daemon
+Documentation=https://github.com/serbernar/cybersan
+After=network.target
+
+[Service]
+Type=simple
+User=solo
+WorkingDirectory=/opt/cybersan/daemon
+Environment=PYTHONUNBUFFERED=1
+# wpctl controls the volume of the user session's PipeWire sink; a system
+# service has to be told where that session's socket lives.
+Environment=XDG_RUNTIME_DIR=/run/user/1000
+# Extra flags for this particular car, e.g. a different port. Missing file is
+# fine — there are no flags that fake vehicle data.
+EnvironmentFile=-/opt/cybersan/cybersan.env
+ExecStart=/usr/bin/python3 -m cybersan --port 8322 --static /opt/cybersan/hud $CYBERSAN_ARGS
+Restart=always
+RestartSec=2
+# The daemon is the only thing that must survive a bad sensor, so keep its own
+# failure domain small: no privileges it does not need.
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ReadWritePaths=/opt/cybersan/var
+
+[Install]
+WantedBy=multi-user.target
