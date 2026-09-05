@@ -68,9 +68,13 @@ export interface Windows {
 }
 
 export interface Lights {
+  /** Габарити: on with the sidelights, and under both beams. */
+  parking: boolean
   lowBeam: boolean
   highBeam: boolean
   fog: boolean
+  /** Стопи: the pedal is down, not the handbrake warning. */
+  brake: boolean
   hazard: boolean
   turnLeft: boolean
   turnRight: boolean

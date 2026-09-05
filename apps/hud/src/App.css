@@ -20,7 +20,9 @@
 /* Portrait: Volvo-style stack — cards down the screen, controls pinned low. */
 [data-layout='portrait'] .shell {
   grid-template-columns: 1fr;
-  grid-template-rows: auto 300px 1fr auto;
+  /* Tall enough that the car is still a car once the media card has taken its
+     share of the row. */
+  grid-template-rows: auto 380px 1fr auto;
   grid-template-areas:
     'status'
     'car'

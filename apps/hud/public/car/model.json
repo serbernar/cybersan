@@ -1,0 +1,46 @@
+{
+  "file": "model.glb",
+  "credit": "\"Nissan X-Trail\" by zairiq zairiq, CC BY 4.0 — https://sketchfab.com/3d-models/nissan-x-trail-17b89986bb54463f94a1a1b9e020a187",
+  "length": 4.455,
+  "mirror": true,
+  "hide": [
+    "Object_304",
+    "Object_307"
+  ],
+  "nodes": {
+    "Object_85": "headlamp",
+    "Object_88": "headlamp",
+    "Object_61": "indicator",
+    "Object_64": "indicator",
+    "Object_55": "indicator",
+    "Object_58": "indicator",
+    "Object_91": "reverse",
+    "Object_94": "reverse",
+    "Object_79": "taillamp",
+    "Object_82": "taillamp",
+    "Object_73": "indicator",
+    "Object_76": "indicator",
+    "Object_67": "taillamp",
+    "Object_70": "taillamp",
+    "Object_424": "foglamp",
+    "Object_433": "foglamp"
+  },
+  "materials": {
+    "body-color": "paint",
+    "glass1": "glass",
+    "glass2": "glass",
+    "Black_glass": "glass",
+    "tire": "tyre",
+    "brake": "rim",
+    "metal": "trim",
+    "metal3": "trim",
+    "Material_31": "trim",
+    "plt2": "trim",
+    "material_0": "trim",
+    "Black_Plastic": "clad",
+    "front-grill": "clad",
+    "plt1": "headlamp",
+    "plt3": "taillamp",
+    "plt3-2": "taillamp"
+  }
+}

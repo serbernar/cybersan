@@ -23,7 +23,7 @@ def build_parser() -> argparse.ArgumentParser:
         "--static",
         type=Path,
         default=DEFAULT_STATIC,
-        help="directory holding the built HUD (index.html + assets/)",
+        help="directory holding the built HUD (the whole apps/hud/dist)",
     )
     parser.add_argument(
         "--no-bluetooth",

@@ -75,7 +75,10 @@ def build_app(hub: Hub, static_dir: Path | None) -> web.Application:
             return web.FileResponse(static_dir / "index.html")
 
         app.router.add_get("/", index)
-        app.router.add_static("/assets", static_dir / "assets")
+        # The whole build, not just assets/: the HUD also ships fonts and the
+        # car model from public/, and a 404 there is a silently worse dashboard
+        # rather than an error anyone would notice.
+        app.router.add_static("/", static_dir, show_index=False)
         log.info("serving HUD from %s", static_dir)
     else:
         async def missing(_: web.Request) -> web.Response:

@@ -31,7 +31,13 @@ export function CarCard({ units }: { units: Units }): JSX.Element {
       </div>
 
       <div className="hero__art">
-        <CarView running={state.engine.running} doors={state.body.doors} lights={state.body.lights} />
+        <CarView
+          running={state.engine.running}
+          doors={state.body.doors}
+          windows={state.body.windows}
+          lights={state.body.lights}
+          reverse={state.vehicle.gearHint === 'R'}
+        />
       </div>
 
       <footer className={`hero__state ${sensed && open.length ? 'is-alert' : ''}`}>

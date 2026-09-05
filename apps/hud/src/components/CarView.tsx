@@ -1,6 +1,10 @@
-import { useEffect, useState } from 'react'
-import type { Doors, Lights } from '@cybersan/protocol'
+import { Suspense, lazy, useEffect, useState } from 'react'
+import type { Doors, Lights, Windows } from '@cybersan/protocol'
 import { XTrail } from './XTrail'
+// three.js is by far the heaviest thing the HUD loads. Splitting it out keeps
+// the first paint on the Pi as quick as it was, with the flat car standing in
+// for the fraction of a second the model needs to arrive.
+const XTrail3D = lazy(() => import('./XTrail3D').then((m) => ({ default: m.XTrail3D })))
 import './CarView.css'
 
 /**
@@ -14,23 +18,28 @@ interface CarManifest {
 }
 
 /**
- * Shows the car, from rendered layers when they exist and from the built-in
- * drawing when they do not.
+ * Shows the car: pre-rendered layers if any were dropped into public/car/, the
+ * built-in 3D model otherwise, and the flat drawing where there is no WebGL.
  *
- * The state logic lives here once, so replacing the artwork with renders of a
- * properly licensed 3D model is a matter of adding files — no component, pane
- * or layout has to know which of the two is on screen.
+ * The state logic lives here once, so swapping the artwork — for renders of a
+ * bought model, say — is a matter of adding files. No component, pane or layout
+ * has to know which of the three is on screen.
  */
 export function CarView({
   running,
   doors,
+  windows,
   lights,
+  reverse,
 }: {
   running: boolean
   doors: Doors
+  windows: Windows
   lights: Lights
+  reverse: boolean
 }): JSX.Element {
   const [manifest, setManifest] = useState<CarManifest | null>(null)
+  const [noWebgl, setNoWebgl] = useState(false)
 
   useEffect(() => {
     let alive = true
@@ -40,7 +49,7 @@ export function CarView({
         if (alive && data?.base) setManifest(data)
       })
       .catch(() => {
-        // No renders installed; the drawing below is the intended fallback.
+        // No renders installed; the model below is the intended default.
       })
     return () => {
       alive = false
@@ -48,7 +57,22 @@ export function CarView({
   }, [])
 
   if (!manifest) {
-    return <XTrail running={running} doors={doors} lights={lights} />
+    // The model is the intended picture; the flat drawing is what is left when
+    // the panel has no working GL — old kiosk images, a software renderer that
+    // gave up, a browser started without acceleration.
+    if (noWebgl) return <XTrail running={running} doors={doors} lights={lights} />
+    return (
+      <Suspense fallback={<XTrail running={running} doors={doors} lights={lights} />}>
+        <XTrail3D
+          running={running}
+          doors={doors}
+          windows={windows}
+          lights={lights}
+          reverse={reverse}
+          onUnavailable={() => setNoWebgl(true)}
+        />
+      </Suspense>
+    )
   }
 
   const beam = lights.lowBeam || lights.highBeam

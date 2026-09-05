@@ -39,9 +39,11 @@
       "rearRight": 0
     },
     "lights": {
+      "parking": false,
       "lowBeam": false,
       "highBeam": false,
       "fog": false,
+      "brake": false,
       "hazard": false,
       "turnLeft": false,
       "turnRight": false
