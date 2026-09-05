@@ -14,6 +14,9 @@ set -euo pipefail
 KEEPALIVE_PIN="${CYBERSAN_KEEPALIVE_PIN:-17}"
 IGNITION_PIN="${CYBERSAN_IGNITION_PIN:-4}"
 OFF_DELAY="${CYBERSAN_OFF_DELAY:-20}"
+# Empty by default: without the strap to ground the guard would read every desk
+# session as "harness unplugged" and never shut anything down.
+PRESENCE_PIN="${CYBERSAN_PRESENCE_PIN:-}"
 CONFIG=/boot/firmware/config.txt
 ENABLE=no
 
@@ -39,8 +42,13 @@ else
 fi
 
 echo "==> Guard configuration"
+POWER_ARGS="--pin ${IGNITION_PIN} --delay ${OFF_DELAY}"
+if [[ -n "$PRESENCE_PIN" ]]; then
+  POWER_ARGS="${POWER_ARGS} --presence-pin ${PRESENCE_PIN}"
+  echo "    presence pin BCM${PRESENCE_PIN}: the guard leaves the power alone off the car"
+fi
 cat > /opt/cybersan/power.env <<ENV
-CYBERSAN_POWER_ARGS=--pin ${IGNITION_PIN} --delay ${OFF_DELAY}
+CYBERSAN_POWER_ARGS=${POWER_ARGS}
 ENV
 
 echo "==> systemd unit"
